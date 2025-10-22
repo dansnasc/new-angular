@@ -33,7 +33,7 @@ jobs:
       run: npm run lint || echo "Lint não configurado"
       
     - name: Executar testes
-      run: npm run test -- --watch=false --browsers=ChromeHeadless
+      run: npm run test:ci
       
     - name: Build da aplicação
       run: npm run build:docker

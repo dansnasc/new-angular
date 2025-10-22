@@ -9,6 +9,7 @@
     "build:docker": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "test:ci": "ng test --watch=false --browsers=ChromeHeadless",
     "docker:build": "docker build -t bemagro-app .",
     "docker:run": "docker run -p 4200:4200 -v $(pwd)/src:/app/src bemagro-app",
     "docker:up": "docker-compose up -d",
