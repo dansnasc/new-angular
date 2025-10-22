@@ -9,6 +9,7 @@ Aplicação Angular para gestão geoespacial com ferramentas de mapeamento e an�
 - **Turf.js** - Operações geoespaciais
 - **PrimeNG** - Componentes UI
 - **Docker** - Containerização
+- **SSH** - Autenticação segura configurada
 
 ## 🛠️ Desenvolvimento
 
