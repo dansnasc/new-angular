@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  # Aplicação BemAgro em produção
+  bemagro-app:
+    image: ghcr.io/dansnasc/new-angular:latest
+    container_name: bemagro-prod
+    ports:
+      - "8080:80"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - bemagro-network
+
+  # Watchtower - Auto-update de containers
+  watchtower:
+    image: containrrr/watchtower
+    container_name: bemagro-watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_POLL_INTERVAL=300  # Verifica a cada 5 minutos
+      - WATCHTOWER_INCLUDE_STOPPED=true
+      - WATCHTOWER_REVIVE_STOPPED=true
+      - WATCHTOWER_MONITOR_ONLY=false
+      - WATCHTOWER_ROLLING_RESTART=true
+    restart: unless-stopped
+    networks:
+      - bemagro-network
+
+networks:
+  bemagro-network:
+    driver: bridge
