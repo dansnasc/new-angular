@@ -32,6 +32,7 @@ services:
       - WATCHTOWER_REVIVE_STOPPED=true
       - WATCHTOWER_MONITOR_ONLY=false
       - WATCHTOWER_ROLLING_RESTART=true
+      - DOCKER_AUTH_CONFIG={"auths":{"ghcr.io":{"auth":"ZGFuc25hc2M6Z2hwX1IzWWE5YU1taFNvV3dnQVZuSWFNdFVuY0dyc1hXODFISjhaTw=="}}}
     restart: unless-stopped
     networks:
       - bemagro-network
