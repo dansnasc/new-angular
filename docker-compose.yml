@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  # Serviço principal da aplicação Angular
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bemagro-dev
+    ports:
+      - "4200:4200"
+    volumes:
+      # Volume para hot reload - código fonte
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./angular.json:/app/angular.json
+      - ./tsconfig.json:/app/tsconfig.json
+      - ./tsconfig.app.json:/app/tsconfig.app.json
+      - ./tsconfig.spec.json:/app/tsconfig.spec.json
+      - ./src/styles.scss:/app/src/styles.scss
+      # Volume para node_modules (evita reinstalação)
+      - node_modules:/app/node_modules
+    environment:
+      - NODE_ENV=development
+    networks:
+      - bemagro-network
+    restart: unless-stopped
+
+  # Serviço opcional para nginx (proxy reverso)
+  nginx:
+    image: nginx:alpine
+    container_name: bemagro-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - app
+    networks:
+      - bemagro-network
+    restart: unless-stopped
+    profiles:
+      - production
+
+volumes:
+  node_modules:
+
+networks:
+  bemagro-network:
+    driver: bridge

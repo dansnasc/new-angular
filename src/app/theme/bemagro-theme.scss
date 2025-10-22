@@ -1,0 +1,174 @@
+@use 'sass:map';
+@use './bemagro-tokens' as tokens;
+
+// CSS Custom Properties para sobrescrever o tema Aura
+:root {
+  // Sobrescrever cores primárias do Aura com nossas cores
+  --p-primary-50: #{map.get(tokens.$bemagroTokens, 'colors', 'primary', '50')};
+  --p-primary-100: #{map.get(tokens.$bemagroTokens, 'colors', 'primary', '100')};
+  --p-primary-200: #{map.get(tokens.$bemagroTokens, 'colors', 'primary', '200')};
+  --p-primary-300: #{map.get(tokens.$bemagroTokens, 'colors', 'primary', '300')};
+  --p-primary-400: #{map.get(tokens.$bemagroTokens, 'colors', 'primary', '400')};
+  --p-primary-500: #{map.get(tokens.$bemagroTokens, 'colors', 'login', 'primary')}; // #0F8536
+  --p-primary-600: #{map.get(tokens.$bemagroTokens, 'colors', 'login', 'primaryHover')}; // #0d6b2c
+  --p-primary-700: #{map.get(tokens.$bemagroTokens, 'colors', 'login', 'primaryHover')}; // #0d6b2c
+  --p-primary-800: #{map.get(tokens.$bemagroTokens, 'colors', 'primary', '800')};
+  --p-primary-900: #{map.get(tokens.$bemagroTokens, 'colors', 'primary', '900')};
+  
+  // Cores específicas do login
+  --bemagro-login-primary: #{map.get(tokens.$bemagroTokens, 'colors', 'login', 'primary')};
+  --bemagro-login-primary-hover: #{map.get(tokens.$bemagroTokens, 'colors', 'login', 'primaryHover')};
+  --bemagro-login-primary-shadow: #{map.get(tokens.$bemagroTokens, 'colors', 'login', 'primaryShadow')};
+  --bemagro-login-accent: #{map.get(tokens.$bemagroTokens, 'colors', 'login', 'accent')};
+  --bemagro-login-accent-hover: #{map.get(tokens.$bemagroTokens, 'colors', 'login', 'accentHover')};
+  --bemagro-login-microsoft: #{map.get(tokens.$bemagroTokens, 'colors', 'login', 'microsoft')};
+  --bemagro-login-border: #{map.get(tokens.$bemagroTokens, 'colors', 'login', 'border')};
+  --bemagro-login-border-focus: #{map.get(tokens.$bemagroTokens, 'colors', 'login', 'borderFocus')};
+  --bemagro-login-border-error: #{map.get(tokens.$bemagroTokens, 'colors', 'login', 'borderError')};
+  --bemagro-login-background: #{map.get(tokens.$bemagroTokens, 'colors', 'login', 'background')};
+  --bemagro-login-disabled: #{map.get(tokens.$bemagroTokens, 'colors', 'login', 'disabled')};
+  
+  // Espaçamentos e bordas específicos
+  --bemagro-input-padding: #{map.get(tokens.$bemagroTokens, 'spacing', '3')} #{map.get(tokens.$bemagroTokens, 'spacing', '4')};
+  --bemagro-input-border-radius: #{map.get(tokens.$bemagroTokens, 'borderRadius', 'xl')};
+  --bemagro-button-padding: #{map.get(tokens.$bemagroTokens, 'spacing', '3.5')};
+  --bemagro-button-border-radius: #{map.get(tokens.$bemagroTokens, 'borderRadius', 'xl')};
+}
+
+// Estilos globais para componentes PrimeNG usando as variáveis
+// Inputs
+.p-inputtext {
+  border: 2px solid var(--bemagro-login-border);
+  border-radius: var(--bemagro-input-border-radius);
+  padding: var(--bemagro-input-padding);
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background-color: var(--bemagro-login-background);
+  
+  &:focus {
+    border-color: var(--bemagro-login-border-focus);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+  }
+  
+  &.p-invalid {
+    border-color: var(--bemagro-login-border-error);
+  }
+}
+
+// Password input
+.p-password .p-inputtext {
+  border: 2px solid var(--bemagro-login-border);
+  border-radius: var(--bemagro-input-border-radius);
+  padding: var(--bemagro-input-padding);
+  font-size: 14px;
+  transition: all 0.3s ease;
+  
+  &:focus {
+    border-color: var(--bemagro-login-border-focus);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+  }
+  
+  &.p-invalid {
+    border-color: var(--bemagro-login-border-error);
+  }
+}
+
+.p-password-toggle-icon {
+  color: #666666;
+}
+
+// Botões
+.p-button {
+  border-radius: var(--bemagro-button-border-radius);
+  padding: var(--bemagro-button-padding);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  
+  // Botão principal (login)
+  &.login-btn {
+    background: var(--bemagro-login-primary);
+    border: none;
+    color: white;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 20px;
+    
+    &:hover:not(:disabled) {
+      background: var(--bemagro-login-primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px var(--bemagro-login-primary-shadow);
+    }
+    
+    &:disabled {
+      background: var(--bemagro-login-disabled);
+      cursor: not-allowed;
+    }
+  }
+  
+  // Botão Microsoft
+  &.microsoft-btn {
+    background: transparent;
+    border: 2px solid var(--bemagro-login-border);
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    width: 100%;
+    margin-bottom: 20px;
+    
+    &:hover {
+      border-color: var(--bemagro-login-accent);
+      background: var(--bemagro-login-background);
+      transform: translateY(-1px);
+    }
+    
+    .p-button-icon {
+      color: var(--bemagro-login-microsoft);
+      margin-right: 8px;
+    }
+  }
+}
+
+// Links
+a {
+  color: var(--bemagro-login-accent);
+  text-decoration: none;
+  
+  &:hover {
+    color: var(--bemagro-login-accent-hover);
+    text-decoration: underline;
+  }
+}
+
+// Divider
+.p-divider-content {
+  background: white;
+  padding: 0 15px;
+  font-size: 12px;
+  color: #666;
+}
+
+// Card
+.p-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: none;
+  backdrop-filter: blur(10px);
+  
+  .p-card-body {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px 30px;
+  }
+}
+
+// Dropdown
+.p-dropdown {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  
+  .p-dropdown-label {
+    font-size: 14px;
+    color: #666;
+  }
+}

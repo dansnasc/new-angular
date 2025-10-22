@@ -1,0 +1,188 @@
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  
+  // Background image placeholder - você pode substituir pela imagem real
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/images/bg-login.png');
+    background-size: cover;
+    background-position: bottom;
+    opacity: 0.8;
+    z-index: 1;
+  }
+}
+
+.language-selector {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+  
+  :deep(.p-dropdown) {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    min-width: 120px;
+    
+    .p-dropdown-label {
+      font-size: 14px;
+      color: #666;
+    }
+  }
+}
+
+.login-form-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+:deep(.p-card) {
+  background: #FFFFFF;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: none;
+  backdrop-filter: blur(10px);
+  
+  .p-card-body {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px 30px;
+  }
+}
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 30px;
+  
+  .logo-image {
+    max-width: 170px;
+    height: auto;
+  }
+}
+
+.login-form {
+  .form-field {
+    margin-bottom: 20px;
+    
+    label {
+      display: block;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    
+    .password-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      
+      .forgot-password {
+        color: var(--bemagro-login-accent);
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 500;
+        
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  
+  // Remover todos os ::ng-deep com !important
+  // Os estilos agora vêm do tema global através das CSS custom properties
+}
+
+// Botões agora usam as classes do tema global
+.login-btn {
+  width: 100%;
+  margin-bottom: 20px;
+  // Estilos vêm do tema global via CSS custom properties
+}
+
+.microsoft-btn {
+  width: 100%;
+  margin-bottom: 20px;
+  // Estilos vêm do tema global via CSS custom properties
+}
+
+:deep(.p-divider-content) {
+  background: white;
+  padding: 0 15px;
+  font-size: 12px;
+  color: #666;
+}
+
+.create-account-container {
+  text-align: center;
+  
+  .create-account-link {
+    color: var(--bemagro-login-accent);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .login-container {
+    padding: 20px;
+  }
+  
+  .login-form-container {
+    max-width: 100%;
+  }
+  
+  :deep(.login-card) {
+    .p-card-body {
+      padding: 30px 20px;
+    }
+  }
+  
+  .logo-container {
+    margin-bottom: 25px;
+    
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      
+      i {
+        font-size: 20px;
+      }
+    }
+    
+    .logo-text {
+      font-size: 24px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .language-selector {
+    top: 10px;
+    right: 10px;
+  }
+  
+  .login-container {
+    padding: 10px;
+  }
+}

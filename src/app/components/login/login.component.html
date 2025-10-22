@@ -1,0 +1,69 @@
+<div class="login-container">
+  <!-- Login Form -->
+  <div class="login-form-container">
+    <p-card>
+      <!-- Logo -->
+      <div class="logo-container">
+        <img src="/images/logo.png" alt="Logo BEMAGRO - Sistema Geoespacial" class="logo-image">
+      </div>
+
+      <!-- Login Form -->
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        <!-- Email Field -->
+        <div class="form-field">
+          <label for="email">E-mail</label>
+          <input 
+            pInputText 
+            id="email"
+            formControlName="email"
+            placeholder="usuário@email.com.br">
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-field">
+          <div class="password-header">
+            <label for="password">Senha</label>
+            <a href="#" class="forgot-password" (click)="onForgotPassword($event)">
+              Esqueceu a senha?
+            </a>
+          </div>
+          <p-password 
+            id="password"
+            formControlName="password"
+            [toggleMask]="true"
+            placeholder="Digite sua senha"
+            [feedback]="false">
+          </p-password>
+        </div>
+
+        <!-- Login Button -->
+        <p-button 
+          type="submit"
+          label="Acessar Plataforma"
+          styleClass="login-btn"
+          [disabled]="loginForm.invalid">
+        </p-button>
+
+        <!-- Divider -->
+        <p-divider align="center">
+          <span class="divider-text">Ou continuar com:</span>
+        </p-divider>
+
+        <!-- Microsoft Login Button -->
+        <p-button 
+          label="Login Microsoft"
+          icon="pi pi-microsoft"
+          styleClass="microsoft-btn"
+          (onClick)="onMicrosoftLogin()">
+        </p-button>
+
+        <!-- Create Account Link -->
+        <div class="create-account-container">
+          <a href="#" class="create-account-link" (click)="onCreateAccount($event)">
+            Criar uma contaa
+          </a>
+        </div>
+      </form>
+    </p-card>
+  </div>
+</div>

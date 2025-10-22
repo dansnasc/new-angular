@@ -1,16 +1,41 @@
-# Projeto
+# BemAgro - Aplicação Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.6.
+Aplicação Angular para gestão geoespacial com ferramentas de mapeamento e análise geográfica.
 
-## Development server
+## 🚀 Tecnologias
 
-To start a local development server, run:
+- **Angular 20+** - Framework principal
+- **Leaflet** - Biblioteca de mapas
+- **Turf.js** - Operações geoespaciais
+- **PrimeNG** - Componentes UI
+- **Docker** - Containerização
 
+## 🛠️ Desenvolvimento
+
+### Com Docker (Recomendado)
 ```bash
-ng serve
+# Iniciar ambiente de desenvolvimento
+npm run docker:up
+
+# Acessar aplicação
+http://localhost:4200
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Desenvolvimento Local
+```bash
+# Instalar dependências
+npm install
+
+# Iniciar servidor de desenvolvimento
+npm start
+```
+
+## 📦 Scripts Disponíveis
+
+- `npm start` - Servidor de desenvolvimento
+- `npm run docker:up` - Ambiente Docker
+- `npm run build` - Build de produção
+- `npm test` - Executar testes
 
 ## Code scaffolding
 
