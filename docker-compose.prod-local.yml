@@ -1,10 +1,10 @@
 version: '3.8'
 
 services:
-  # Aplicação BemAgro em produção
+  # Aplicação BemAgro em produção (usando imagem local)
   bemagro-app:
-    image: ghcr.io/dansnasc/new-angular:latest
-    container_name: bemagro-prod
+    image: bemagro-with-changes:latest
+    container_name: bemagro-prod-local
     ports:
       - "8080:80"
     environment:
