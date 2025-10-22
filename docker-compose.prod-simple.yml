@@ -25,14 +25,10 @@ services:
     container_name: bemagro-watchtower
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    environment:
-      - WATCHTOWER_CLEANUP=true
-      - WATCHTOWER_POLL_INTERVAL=60   # Verifica a cada 1 minuto
-      - WATCHTOWER_INCLUDE_STOPPED=true
-      - WATCHTOWER_REVIVE_STOPPED=true
-      - WATCHTOWER_MONITOR_ONLY=false
-      - WATCHTOWER_ROLLING_RESTART=true
-      - DOCKER_AUTH_CONFIG={"auths":{"ghcr.io":{"auth":"ZGFuc25hc2M6Z2hwX1IzWWE5YU1taFNvV3dnQVZuSWFNdFVuY0dyc1hXODFISjhaTw=="}}}
+      - ./docker-config.json:/config.json:ro
+    env_file:
+      - docker.env
+    command: --interval 60 --include-stopped --revive-stopped --cleanup --rolling-restart bemagro-prod
     restart: unless-stopped
     networks:
       - bemagro-network

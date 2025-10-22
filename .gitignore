@@ -43,3 +43,5 @@ Thumbs.db
 
 # Docker compose files with secrets
 docker-compose.prod-simple.yml
+docker-config.json
+docker.env
